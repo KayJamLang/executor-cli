@@ -43,11 +43,11 @@ public class Main {
         executor.addLibrary(new MainLibrary());
         File libDir = new File(Paths.get(System.getProperty("user.dir"),
                 "./libs/").normalize().toString());
-        if(libDir.exists()){
+        if(libDir.exists()||libDir.createNewFile()){
             File[] files = libDir.listFiles();
             if(files!=null)
                 for(File libJar: files){
-                    if(libDir.getName().endsWith(".jar"))
+                    if(libJar.getName().endsWith(".jar"))
                         loadJarLibrary(executor, libJar);
                 }
         }
@@ -73,7 +73,7 @@ public class Main {
             String className = je.getName().substring(0,je.getName().length()-6);
             className = className.replace('/', '.');
             Class<?> c = cl.loadClass(className);
-            if(c.isAssignableFrom(Library.class))
+            if(Library.class.isAssignableFrom(c))
                 executor.addLibrary((Library) c.newInstance());
         }
     }
