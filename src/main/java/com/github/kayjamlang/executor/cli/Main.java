@@ -41,9 +41,8 @@ public class Main {
 
         Executor executor = new Executor();
         executor.addLibrary(new MainLibrary());
-        File libDir = new File(Paths.get(System.getProperty("user.dir"),
-                "./libs/").normalize().toString());
-        if(libDir.exists()||libDir.createNewFile()){
+        File libDir = new File(System.getProperty("libsPath"));
+        if(libDir.exists()||libDir.mkdir()){
             File[] files = libDir.listFiles();
             if(files!=null)
                 for(File libJar: files){
