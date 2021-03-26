@@ -7,7 +7,7 @@ Command Line Interface for [KayJam language](https://github.com/KayJamLang/core)
 So far, installation is possible only on Windows.
 
 ### For Windows
-1. Download windows.exe from latest release in [GitHub Releases](https://github.com/KayJamLang/executor-cli/releases/)
+1. Download windows.exe from latest release in [GitHub Releases](https://github.com/KayJamLang/executor-request-library/releases/latest)
 2. Run windows.exe
 3. Done
 
