@@ -1,6 +1,8 @@
 # KayJam Executor CLI
 Command Line Interface for [KayJam language](https://github.com/KayJamLang/core) executor
 
+[![Preview](https://raw.githubusercontent.com/KayJamLang/executor-cli/main/usage.gif](https://github.com/KayJamLang/executor-cli)
+
 ## Installation
 So far, installation is possible only on Windows.
 
