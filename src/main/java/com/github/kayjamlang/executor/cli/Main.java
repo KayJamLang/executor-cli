@@ -53,7 +53,12 @@ public class Main {
 
         File executeFile = new File(Paths.get(System.getProperty("pathFile"),
                 cmd.getOptionValue("file")).normalize().toString());
-        executor.execute("{"+read(executeFile)+"}");
+
+        try {
+            executor.execute("{"+read(executeFile)+"}");
+        }catch (Throwable t){
+            System.out.println("Error: "+t.getClass().getSimpleName()+": "+t.getMessage());
+        }
     }
 
     private static void loadJarLibrary(Executor executor, File file) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {

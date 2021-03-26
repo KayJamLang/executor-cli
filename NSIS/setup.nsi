@@ -7,8 +7,8 @@
 ;General
 
   ;Name and file
-  Name "Executor CLI"
-  OutFile "setup.exe"
+  Name "KayJamExecutor CLI"
+  OutFile "windows.exe"
   Unicode True
 
   ;Default installation folder
@@ -43,9 +43,15 @@
 Section
   CreateDirectory "$INSTDIR"
   CreateDirectory "$INSTDIR\bin"
+  CreateDirectory "$INSTDIR\libs"
 
   SetOutPath "$INSTDIR\bin"
   File bin\kj-cli.jar
+
+  SetOutPath "$INSTDIR\libs"
+  File libs\request-library-0.1.jar
+  File libs\json-library-0.1.jar
+
 
   SetOutPath "$WINDIR"
   File bin\kj-cli.bat
@@ -56,28 +62,22 @@ Section
 SectionEnd
 
 ;--------------------------------
-;Descriptions
-
-  ;Language strings
-  LangString DESC_SecDummy ${LANG_ENGLISH} "A test section."
-
-  ;Assign language strings to sections
-  !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-    !insertmacro MUI_DESCRIPTION_TEXT ${SecDummy} $(DESC_SecDummy)
-  !insertmacro MUI_FUNCTION_DESCRIPTION_END
-
-;--------------------------------
 ;Uninstaller Section
 
 Section "Uninstall"
 
-  Delete "$INSTDIR\Uninstall.exe"
+  ;Bin
   Delete "$INSTDIR\bin\kj-cli.jar"
+  RMDir "$INSTDIR\bin"
+
+  ;Libs
+  Delete "$INSTDIR\libs\request-library-0.1.jar"
+  Delete "$INSTDIR\libs\json-library-0.1.jar"
+  RMDir "$INSTDIR\libs"
+
   Delete "$WINDIR\kj-cli.bat"
 
-  RMDir "$INSTDIR\bin"
+  ;Other
+  Delete "$INSTDIR\Uninstall.exe"
   RMDir "$INSTDIR"
-
-  DeleteRegKey /ifempty HKCU "Software\Modern UI Test"
-
 SectionEnd
