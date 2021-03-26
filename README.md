@@ -22,3 +22,6 @@ Type "kj-cli -f <name of file>"
 2. Open the "libs" folder
 3. Copy the jar file of the downloaded library
 4. Done
+
+## Additionally
+[Library catalog for KayJam Executor](https://github.com/KayJamLang/executor/blob/main/libs.md)
